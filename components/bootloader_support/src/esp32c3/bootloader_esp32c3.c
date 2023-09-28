@@ -324,7 +324,7 @@ esp_err_t bootloader_init(void)
     // initialize console, from now on, we can use esp_log
     bootloader_console_init();
     /* print 2nd bootloader banner */
-    bootloader_print_banner();
+    // bootloader_print_banner();
     // update flash ID
     bootloader_flash_update_id();
     // Check and run XMC startup flow
@@ -332,14 +332,14 @@ esp_err_t bootloader_init(void)
         ESP_LOGE(TAG, "failed when running XMC startup flow, reboot!");
         goto err;
     }
-    // read bootloader header
-    if ((ret = bootloader_read_bootloader_header()) != ESP_OK) {
-        goto err;
-    }
-    // read chip revision and check if it's compatible to bootloader
-    if ((ret = bootloader_check_bootloader_validity()) != ESP_OK) {
-        goto err;
-    }
+    // // read bootloader header
+    // if ((ret = bootloader_read_bootloader_header()) != ESP_OK) {
+    //     goto err;
+    // }
+    // // read chip revision and check if it's compatible to bootloader
+    // if ((ret = bootloader_check_bootloader_validity()) != ESP_OK) {
+    //     goto err;
+    // }
     // initialize spi flash
     if ((ret = bootloader_init_spi_flash()) != ESP_OK) {
         goto err;
